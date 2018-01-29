@@ -4,8 +4,9 @@ services:
   - docker
 
 language: ruby
-group: deprecated-2017Q4
+group: Stable
 dist: Precise
+Os: Linux
 
 before_install:
   # Clone DualBootPatcher Repository
