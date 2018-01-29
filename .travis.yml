@@ -1,7 +1,11 @@
-sudo: required
+sudo: false
 
 services:
   - docker
+
+language: ruby
+group: deprecated-2017Q4
+dist: Precise
 
 before_install:
   # Clone DualBootPatcher Repository
