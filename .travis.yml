@@ -1,11 +1,16 @@
-sudo: required
+sudo: False
 
 services:
   - docker
-
+  
+language: ruby
+group: deprecated-2017Q4
+dist: Precise
+os: linux
+  
 before_install:
   # Clone DualBootPatcher Repository
-  - git clone --recursive https://github.com/killergg789/DualBootPatcher -b master DualBootPatcher/
+  - git clone --recursive https://github.com/killergg789/DualBootPatcher -b test1 DualBootPatcher/
   # Pull docker images
   - docker pull yshalsager/dualbootpatcher:9.3.0-4-base
   - docker pull yshalsager/dualbootpatcher:9.3.0-4-android
