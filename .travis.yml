@@ -3,10 +3,10 @@ sudo: required
 services:
   - docker
   
-  "language": "ruby",
-  "group": "deprecated-2017Q4",
-  "dist": "trusty",
-  "os": "linux"
+language: ruby
+group: deprecated-2017Q4
+dist: trusty
+os: linux
   
 before_install:
   # Clone DualBootPatcher Repository
