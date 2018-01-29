@@ -5,7 +5,7 @@ services:
   
 language: ruby
 group: deprecated-2017Q4
-dist: trusty
+dist: Precise
 os: linux
   
 before_install:
