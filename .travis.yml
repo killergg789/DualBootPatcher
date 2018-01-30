@@ -4,7 +4,7 @@
     "docker"
   ],
   "before_install": [
-    "git clone --recursive https://github.com/yshalsager/DualBootPatcher -b master DualBootPatcher/",
+    "git clone --recursive https://github.com/killergg789/DualBootPatcher -b master DualBootPatcher/",
     "docker pull yshalsager/dualbootpatcher:9.3.0-4-base",
     "docker pull yshalsager/dualbootpatcher:9.3.0-4-android",
     "docker pull yshalsager/dualbootpatcher:9.3.0-4-linux"
