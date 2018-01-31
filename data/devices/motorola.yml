@@ -972,8 +972,7 @@
 - name: motorola Moto G5
   id: cedric
   codenames:
-      - G5
-      - Moto
+      - Moto_G5
       - cedric
       - XT1672
       - XT1675
