@@ -10,12 +10,14 @@ set(files
     ark.yml
     asus.yml
     blu.yml
+    bq.yml
     cagabi.yml
     cherrymobile.yml
     coolpad.yml
     dexp.yml
     doogee.yml
     elephone.yml
+    energy_sistem.yml
     gionee.yml
     google.yml
     gree.yml
