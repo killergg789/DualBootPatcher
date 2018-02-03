@@ -1,4 +1,5 @@
-sudo: required
+{
+Sudo required
 
 services:
   - docker
@@ -45,3 +46,4 @@ script:
   "group": "stable",
   "dist": "trusty",
   "os": "linux"
+}
