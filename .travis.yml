@@ -1,8 +1,8 @@
-{
-Sudo required
-services:
+sudosudo: required
+
+servicesservices:
   - docker
-]
+
 before_install:
   # Clone DualBootPatcher Repository
   - git clone --recursive https://github.com/killergg789/DualBootPatcher -b master DualBootPatcher/
@@ -29,20 +29,21 @@ script:
     cmake .. -DMBP_BUILD_TARGET=desktop -DMBP_PORTABLE=ON && make -j16 && cpack
     exit
     EOF,
-  "after_success": [
-    "export TRAVIS_CURRENT_DATE=$(date +\"%d%m%y-%Hh%Mm\")",
-    "ls -l ${TRAVIS_BUILD_DIR}/DualBootPatcher/Android_GUI/build/outputs/apk/debug/Android_GUI-debug.apk",
-    "md5sum ${TRAVIS_BUILD_DIR}/DualBootPatcher/Android_GUI/build/outputs/apk/debug/Android_GUI-debug.apk",
-    "ls -l ${TRAVIS_BUILD_DIR}/DualBootPatcher/builder/utilities/DualBootUtilities-9.3.0.zip",
-    "md5sum ${TRAVIS_BUILD_DIR}/DualBootPatcher/builder/utilities/DualBootUtilities-9.3.0.zip",
-    "ls -l ${TRAVIS_BUILD_DIR}/DualBootPatcher/builder/DualBootPatcher-9.3.0-Linux.zip",
-    "md5sum ${TRAVIS_BUILD_DIR}/DualBootPatcher/builder/DualBootPatcher-9.3.0-Linux.zip",
-    "cd ${TRAVIS_BUILD_DIR}/DualBootPatcher/Android_GUI/build/outputs/apk/debug/ &&  curl --upload-file ./Android_GUI-debug.apk https://transfer.sh/Android_GUI-debug-${TRAVIS_CURRENT_DATE}.apk",
-    "cd ${TRAVIS_BUILD_DIR}//DualBootPatcher/builder/utilities/ && curl --upload-file ./DualBootUtilities-9.3.0.zip https://transfer.sh/DualBootUtilities-9.3.0-${TRAVIS_CURRENT_DATE}.zip",
-    "cd ${TRAVIS_BUILD_DIR}/DualBootPatcher/builder/ && curl --upload-file ./DualBootPatcher-9.3.0-Linux.zip https://transfer.sh/DualBootPatcher-9.3.0-${TRAVIS_CURRENT_DATE}-Linux.zip"
-  ]
-  "language": "ruby",
-  "group": "stable",
-  "dist": "trusty",
-  "os": "linux"
-}
+ after_success:
+  - export TRAVIS_CURRENT_DATE=$(date +"%d%m%y-%Hh%Mm")
+  # Check output & md5sum
+  - ls -l ${TRAVIS_BUILD_DIR}/DualBootPatcher/Android_GUI/build/outputs/apk/debug/Android_GUI-debug.apk
+  - md5sum ${TRAVIS_BUILD_DIR}/DualBootPatcher/Android_GUI/build/outputs/apk/debug/Android_GUI-debug.apk
+  - ls -l ${TRAVIS_BUILD_DIR}/DualBootPatcher/builder/utilities/DualBootUtilities-9.3.0.zip
+  - md5sum ${TRAVIS_BUILD_DIR}/DualBootPatcher/builder/utilities/DualBootUtilities-9.3.0.zip
+  - ls -l ${TRAVIS_BUILD_DIR}/DualBootPatcher/builder/DualBootPatcher-9.3.0-Linux.zip
+  - md5sum ${TRAVIS_BUILD_DIR}/DualBootPatcher/builder/DualBootPatcher-9.3.0-Linux.zip
+  # Upload to transfer.sh
+    cd ${TRAVIS_BUILD_DIR}/DualBootPatcher/Android_GUI/build/outputs/apk/debug/ &&  curl --upload-file ./Android_GUI-debug.apk https://transfer.sh/Android_GUI-debug-${TRAVIS_CURRENT_DATE}.apk
+    cd ${TRAVIS_BUILD_DIR}//DualBootPatcher/builder/utilities/ && curl --upload-file ./DualBootUtilities-9.3.0.zip https://transfer.sh/DualBootUtilities-9.3.0-${TRAVIS_CURRENT_DATE}.zip
+    cd ${TRAVIS_BUILD_DIR}/DualBootPatcher/builder/ && curl --upload-file ./DualBootPatcher-9.3.0-Linux.zip https://transfer.sh/DualBootPatcher-9.3.0-${TRAVIS_CURRENT_DATE}-Linux.zip
+  
+language: ruby
+group: stable
+dist: trusty
+os: linux
